@@ -51,11 +51,11 @@ static int maxsp=3;
         
         if(saldo>0){
             String diffString = saldo.toString();
-            return ris+"Totale € "+tot+"\n"+"Rimangono:"+diffString+"€";
+            return ris+"Totale spesa: € "+tot.toString()+"\n"+"Anticipo: "+strant+" €\n"+"Rimangono: "+diffString+" €";
         }else{
             saldo=saldo*-1;
             String diffString = saldo.toString();
-            return ris+"Totale € "+tot+"\n"+"Devo avere:"+diffString+"€";
+            return ris+"Totale spesa: € "+tot.toString()+"\n"+"Anticipo: "+strant+" €\n"+"Devo avere: "+diffString+" €";
         }
         
     }
