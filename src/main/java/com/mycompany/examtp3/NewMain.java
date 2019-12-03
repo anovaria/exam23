@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.examtp3;
 
-import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,24 +8,26 @@ import javax.swing.JOptionPane;
  * @author tss
  */
 public class NewMain {
-static Float[] spese = new Float[8];
-static Float prezzo;
+static Double[] spese = new Double[8];
+static Double prezzo;
+static Double strant;
+
 static int maxsp=3;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+        strant = Double.parseDouble(JOptionPane.showInputDialog("dimmi l 'anticipo"));
         
         for(int i=0; i<maxsp; i++ ){
             
-        
         String strprezzo = JOptionPane.showInputDialog("dimmi il prezzo " + (i+1) +"di"+maxsp);
         // converto il prezzo in float
         try {
-            prezzo = Float.parseFloat(strprezzo);
+            prezzo = Double.parseDouble(strprezzo);
             spese[i]=prezzo;
+            
             
         } catch (Exception e) {
             prezzo=null;
@@ -44,10 +41,23 @@ static int maxsp=3;
 
     public static String getSpese() {
         String ris="";
+        Double tot = 0.0;
+        Double saldo = 0.0;
         for(int i=0; i<maxsp; i++ ){
-            ris+="€."+spese[i]+"\n";
+            ris+="€ "+spese[i]+"\n";
+            tot = Double.sum(tot, spese[i]);
         }
-        return ris;
+        saldo = strant-tot;
+        
+        if(saldo>0){
+            String diffString = saldo.toString();
+            return ris+"Totale € "+tot+"\n"+"Rimangono:"+diffString+"€";
+        }else{
+            saldo=saldo*-1;
+            String diffString = saldo.toString();
+            return ris+"Totale € "+tot+"\n"+"Devo avere:"+diffString+"€";
+        }
+        
     }
     
     
