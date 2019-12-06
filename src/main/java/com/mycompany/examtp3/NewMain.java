@@ -3,10 +3,6 @@ package com.mycompany.examtp3;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author tss
- */
 public class NewMain {
 static Double[] spese = new Double[8];
 static Double prezzo;
